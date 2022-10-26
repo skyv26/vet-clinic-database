@@ -19,3 +19,8 @@ CREATE TABLE animals (
     weight_kg numeric
 );
 
+/*
+    Add a column species of type string to your animals table.
+*/
+
+alter table animals add column species varchar(50);

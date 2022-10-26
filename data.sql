@@ -21,3 +21,25 @@ insert into animals
   ('Pikachu', '07-JAN-2021', 1, FALSE, 15.04),
   ('Devimon', '12-MAY-2017', 5, TRUE, 11)
 ;
+
+/*
+  Insert the following data:
+  Animal: His name is Charmander. He was born on Feb 8th, 2020, and currently weighs -11kg. He is not neutered and he has never tried to escape.
+  Animal: Her name is Plantmon. She was born on Nov 15th, 2021, and currently weighs -5.7kg. She is neutered and she has tried to escape 2 times.
+  Animal: His name is Squirtle. He was born on Apr 2nd, 1993, and currently weighs -12.13kg. He was not neutered and he has tried to escape 3 times.
+  Animal: His name is Angemon. He was born on Jun 12th, 2005, and currently weighs -45kg. He is neutered and he has tried to escape once.
+  Animal: His name is Boarmon. He was born on Jun 7th, 2005, and currently weighs 20.4kg. He is neutered and he has tried to escape 7 times.
+  Animal: Her name is Blossom. She was born on Oct 13th, 1998, and currently weighs 17kg. She is neutered and she has tried to escape 3 times.
+  Animal: His name is Ditto. He was born on May 14th, 2022, and currently weighs 22kg. He is neutered and he has tried to escape 4 times.
+*/ 
+
+insert into animals
+  (name, date_of_birth, escape_attempts, neutered, weight_kg) values
+  ('Charmander', '08-FEB-2020', 0, false, -11),
+  ('Plantmon', '15-NOV-2021', 2, true, -5.7),
+  ('Squirtle', '02-APR-1993', 3, false, -12.13),
+  ('Angemon', '12-JUN-2005', 1, true, -45),
+  ('Boarmon', '07-JUN-2005', 7, true, 20.4),
+  ('Blossom', '13-OCT-1998', 3, true, 17),
+  ('Ditto', '14-MAY-2022', 4, true, 22)
+;

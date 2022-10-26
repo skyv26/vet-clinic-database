@@ -12,7 +12,7 @@ This repository includes files with plain SQL that can be used to recreate a dat
 
 ## Authors
 
-👤 **Author1**
+👦 **Aakash Verma**
 
 - GitHub: [@skyv26](https://github.com/skyv26)
 - Twitter: [@vrma_aakash](https://twitter.com/vrma_aakash)

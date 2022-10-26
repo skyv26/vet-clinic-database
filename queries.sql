@@ -17,3 +17,10 @@ select name from animals where
 date_of_birth >= '2016/01/01' 
 and 
 date_of_birth <= '2019/01/01';
+
+-- List the name of all animals that are neutered and have less than 3 escape attempts.
+select name from animals where neutered is true and escape_attempts < 3;
+
+-- Alternate way for above query
+select name from animals where neutered=true and escape_attempts < 3;
+

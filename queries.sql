@@ -65,3 +65,14 @@ update animals set species = 'pokemon' where name not like '%mon';
 select * from animals;
 commit;
 select * from animals;
+
+/*
+  Now, take a deep breath and... Inside a transaction delete all records in the animals table, then roll back the transaction.
+  After the rollback verify if all records in the animals table still exists. After that, you can start breathing as usual ;)
+*/
+
+begin;
+delete from animals;
+select * from animals;
+rollback;
+select * from animals;

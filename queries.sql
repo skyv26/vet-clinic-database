@@ -33,3 +33,5 @@ select name from animals where weight_kg > 10.5;
 -- Find all animals that are neutered.
 select * from animals where neutered is true;
 
+-- Find all animals not named Gabumon.
+select * from animals where name != 'Gabumon';

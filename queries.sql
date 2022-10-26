@@ -30,3 +30,6 @@ select date_of_birth from animals where name like 'Agumon' or name like 'Pikachu
 -- List name and escape attempts of animals that weigh more than 10.5kg
 select name from animals where weight_kg > 10.5;
 
+-- Find all animals that are neutered.
+select * from animals where neutered is true;
+

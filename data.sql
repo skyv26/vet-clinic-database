@@ -63,3 +63,11 @@ insert into owners
   ('Dean Winchester', 14),
   ('Jodie Whittaker', 38)
 ;
+
+/*
+  Insert the following data into the species table:
+    Pokemon
+    Digimon
+*/
+
+insert into species (name) values ('Pokemon'), ('Digimon');

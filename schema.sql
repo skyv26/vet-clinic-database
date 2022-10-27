@@ -48,3 +48,22 @@ create table species (
     name varchar(50),
     primary key(id)
 );
+
+/*
+    Modify animals table:
+        Make sure that id is set as autoincremented PRIMARY KEY
+        Remove column species
+        Add column species_id which is a foreign key referencing species table
+        Add column owner_id which is a foreign key referencing the owners table
+*/
+
+-- Remove Species
+alter table animals drop column species;
+
+-- Add column species_id which is a foreign key referencing species table
+alter table animals add column species_id int;
+alter table animals add constraint fk_species_id foreign key(species_id) references species(id) on delete cascade;
+
+-- Add column owner_id which is a foreign key referencing the owners table
+alter table animals add column owner_id int;
+alter table animals add constraint fk_owner_id foreign key(owner_id) references owners(id) on delete cascade;

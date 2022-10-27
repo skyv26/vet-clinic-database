@@ -67,5 +67,3 @@ alter table animals add constraint fk_species_id foreign key(species_id) referen
 -- Add column owner_id which is a foreign key referencing the owners table
 alter table animals add column owner_id int;
 alter table animals add constraint fk_owner_id foreign key(owner_id) references owners(id) on delete cascade;
-
--- 

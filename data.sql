@@ -43,3 +43,23 @@ insert into animals
   ('Blossom', '13-OCT-1998', 3, true, 17),
   ('Ditto', '14-MAY-2022', 4, true, 22)
 ;
+
+/* 
+  Insert the following data into the owners table:
+    Sam Smith 34 years old.
+    Jennifer Orwell 19 years old.
+    Bob 45 years old.
+    Melody Pond 77 years old.
+    Dean Winchester 14 years old.
+    Jodie Whittaker 38 years old.
+*/
+
+insert into owners 
+  (full_name, age) values
+  ('Sam Smith', 34),
+  ('Jennifer Orwell', 19),
+  ('Bob', 45),
+  ('Melody Pond', 77),
+  ('Dean Winchester', 14),
+  ('Jodie Whittaker', 38)
+;

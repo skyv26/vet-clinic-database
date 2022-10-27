@@ -71,3 +71,13 @@ insert into owners
 */
 
 insert into species (name) values ('Pokemon'), ('Digimon');
+
+/*
+  Modify your inserted animals so it includes the species_id value:
+    If the name ends in "mon" it will be Digimon
+    All other animals are Pokemon
+*/
+
+update animals set species_id = 2 where name like '%mon';
+update animals set species_id = 1 where name not like '%mon';
+

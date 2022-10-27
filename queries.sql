@@ -116,3 +116,24 @@ select min(weight_kg) as "minimum_animals_weight (kg)", max(weight_kg) as "maxim
 
 -- What is the average number of escape attempts per animal type of those born between 1990 and 2000?
 select avg(escape_attempts) as "Average of Escaped Animal Per Species", species as "Type" from animals where date_of_birth between '01-JAN-1990' and '01-01-2000' group by species;
+
+-- What animals belong to Melody Pond?
+select animal.name as "Animal Name", owner.full_name as "Owner Name" from animals animal join owners owner on owner.id = animal.owner_id where owner.full_name like 'Melody Pond';
+
+-- List of all animals that are pokemon (their type is Pokemon).
+select animal.name as "Animal Name", type.name as "Species Type" from animals animal join species type on animal.species_id = type.id where type.name like 'Pokemon';
+
+-- List all owners and their animals, remember to include those that don't own any animal.
+select owner.full_name as "Owner", animal.name as "Owned" from animals animal right join owners owner on animal.owner_id = owner.id;
+
+-- How many animals are there per species?
+select type.name as "Type", count(animal.*) as "Total Animals" from animals animal right join species type on animal.species_id = type.id group by type.name;
+
+-- List all Digimon owned by Jennifer Orwell.
+select animal.name as "Animal Name", type.name as "Type of Animal" from animals animal join species type on animal.species_id = type.id join owners owner on animal.owner_id = owner.id where owner.full_name like 'Jennifer Orwell' and type.name like 'Digimon';
+
+-- List all animals owned by Dean Winchester that haven't tried to escape.
+select animal.name as "Animal", owner.full_name from animals animal left join owners owner on animal.owner_id = owner.id where owner.full_name like 'Dean Winchester' and animal.escape_attempts=0;
+
+-- Who owns the most animals?
+select owner.full_name as "Owner Name", count(animal.*) as "Total Owned (Animals)" from animals animal left join owners owner on animal.owner_id = owner.id group by owner.full_name order by "Total Owned (Animals)" desc limit 1;

@@ -43,3 +43,54 @@ insert into animals
   ('Blossom', '13-OCT-1998', 3, true, 17),
   ('Ditto', '14-MAY-2022', 4, true, 22)
 ;
+
+/* 
+  Insert the following data into the owners table:
+    Sam Smith 34 years old.
+    Jennifer Orwell 19 years old.
+    Bob 45 years old.
+    Melody Pond 77 years old.
+    Dean Winchester 14 years old.
+    Jodie Whittaker 38 years old.
+*/
+
+insert into owners 
+  (full_name, age) values
+  ('Sam Smith', 34),
+  ('Jennifer Orwell', 19),
+  ('Bob', 45),
+  ('Melody Pond', 77),
+  ('Dean Winchester', 14),
+  ('Jodie Whittaker', 38)
+;
+
+/*
+  Insert the following data into the species table:
+    Pokemon
+    Digimon
+*/
+
+insert into species (name) values ('Pokemon'), ('Digimon');
+
+/*
+  Modify your inserted animals so it includes the species_id value:
+    If the name ends in "mon" it will be Digimon
+    All other animals are Pokemon
+*/
+
+update animals set species_id = 2 where name like '%mon';
+update animals set species_id = 1 where name not like '%mon';
+
+/*
+  Modify your inserted animals to include owner information (owner_id):
+    Sam Smith owns Agumon.
+    Jennifer Orwell owns Gabumon and Pikachu.
+    Bob owns Devimon and Plantmon.
+    Melody Pond owns Charmander, Squirtle, and Blossom.
+    Dean Winchester owns Angemon and Boarmon.
+*/
+update animals set owner_id = (select id from owners where full_name like 'Sam Smith') where name like 'Agu%';
+update animals set owner_id = (select id from owners where full_name like '%well') where name like 'Gabu%' or name like 'Pika%';
+update animals set owner_id = (select id from owners where full_name like 'Bob') where name like 'Devi%' or name like 'Plan%';
+update animals set owner_id = (select id from owners where full_name like 'Mel%') where name in ('Charmander', 'Squirtle', 'Blossom');
+update animals set owner_id = (select id from owners where full_name like 'Dean%') where name in ('Angemon', 'Boarmon');

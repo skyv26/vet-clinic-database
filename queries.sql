@@ -160,3 +160,7 @@ select animal.name as "Animal Name", visit.last_visit as "First Visited (to Mais
 select animal.name as "Animal's Name", type.name as "Type of Animal", to_char(animal.date_of_birth, 'Mon-DD,YYYY') as "Date Of Birth", animal.weight_kg as "Weight (Kg)", vet.name as "Specialist Vet's Name", vet.age as "Age of Vet", to_char(vet.date_of_graduation, 'Mon-DD,YYYY') as "Graduation Date", to_char(visit.last_visit, 'Mon-DD,YYYY') as "Animal's Recent Visit" from animals animal join species type on animal.species_id = type.id join visits visit on visit.animal_id = animal.id join vets vet on vet.id = visit.vet_id order by "Animal's Recent Visit" desc limit 1;
 
 -- How many visits were with a vet that did not specialize in that animal's species?
+select count(visit.vet_id) as "Not Specialization" from species type join specializations expertise on expertise.species_id <> type.id join visits visit on visit.vet_id = expertise.vet_id;
+
+-- What specialty should Maisy Smith consider getting? Look for the species she gets the most.
+select type.name as "Species Name", count(visit.animal_id) as "Visited Time", vet.name as "Vet's Name" from animals animal join visits visit on visit.animal_id = animal.id join vets vet on vet.id = visit.vet_id join species type on type.id = animal.species_id group by ("Species Name", "Vet's Name") order by "Visited Time" desc limit 1;

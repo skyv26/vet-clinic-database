@@ -107,6 +107,6 @@ create table visits (
   animal_id int not null,
   vet_id int not null,
   last_visit data DATE DEFAULT CURRENT_DATE,
-  constrain fk_animal_id foreign key(animal_id) references animals(id),
-  constrain fk_vet_id foreign key(vet_id) references vets(id)
+  constrain fk_animal_id foreign key(animal_id) references animals(id) on delete cascade,
+  constrain fk_vet_id foreign key(vet_id) references vets(id) on delete cascade
 );

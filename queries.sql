@@ -156,4 +156,8 @@ select animal.name as "Animal Name", count(visit.animal_id) as "Visited Time", v
 -- Who was Maisy Smith's first visit?
 select animal.name as "Animal Name", visit.last_visit as "First Visited (to Maisy Smith)" from animals animal join visits visit on visit.animal_id = animal.id join vets vet on vet.id = visit.vet_id where vet.name like 'Maisy%' order by visit.last_visit asc limit 1;
 
--- 
+-- Details for most recent visit: animal information, vet information, and date of visit.
+select animal.name as "Animal's Name", type.name as "Type of Animal", animal.date_of_birth as "Date Of Birth", animal.weight_kg as "Weight (Kg)", vet.name as "Specialist Vet's Name", vet.age as "Age of Vet", vet.date_of_graduation as "Graduation Date", visit.last_visit as "Animal's Recent Visit" from animals animal join species type on animal.species_id = type.id join visits visit on visit.animal_id = animal.id join vets vet on vet.id = visit.vet_id order by "Animal's Recent Visit" desc limit 1;
+
+-- How many visits were with a vet that did not specialize in that animal's species?
+

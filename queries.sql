@@ -146,3 +146,11 @@ select count(visit.animal_id) as "Total Animal Saw (By Stephanie Mendez)" from a
 
 -- List all vets and their specialties, including vets with no specialties.
 select vet.name as "Vet Name", type.name as "Specialize In" from vets vet left join specializations skill on skill.vet_id = vet.id left join species type on type.id = skill.species_id order by vet.name asc;
+
+-- List all animals that visited Stephanie Mendez between April 1st and August 30th, 2020.
+select animal.name as "Animal Name", vet.name as "Vet Name", visit.last_visit as "Last Visited" from animals animal join visits visit on visit.animal_id = animal.id join vets vet on vet.id = visit.vet_id where vet.name like 'Stephanie%' and visit.last_visit between '01-APR-2020' and '30-AUG-2020' order by animal.name asc;
+
+-- What animal has the most visits to vets?
+select animal.name as "Animal Name", count(visit.animal_id) as "Visited Time", vet.name as "Vet's Name" from animals animal join visits visit on visit.animal_id = animal.id join vets vet on vet.id = visit.vet_id group by ("Animal Name", "Vet's Name") order by "Visited Time" desc limit 1;
+
+-- 

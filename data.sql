@@ -94,3 +94,20 @@ update animals set owner_id = (select id from owners where full_name like '%well
 update animals set owner_id = (select id from owners where full_name like 'Bob') where name like 'Devi%' or name like 'Plan%';
 update animals set owner_id = (select id from owners where full_name like 'Mel%') where name in ('Charmander', 'Squirtle', 'Blossom');
 update animals set owner_id = (select id from owners where full_name like 'Dean%') where name in ('Angemon', 'Boarmon');
+
+/*
+  Insert the following data for vets:
+    Vet William Tatcher is 45 years old and graduated Apr 23rd, 2000.
+    Vet Maisy Smith is 26 years old and graduated Jan 17th, 2019.
+    Vet Stephanie Mendez is 64 years old and graduated May 4th, 1981.
+    Vet Jack Harkness is 38 years old and graduated Jun 8th, 2008.
+*/
+
+insert into vets 
+  (name, age, date_of_graduation) values
+  ('William Tatcher', 45, '23-APR-2000'),
+  ('Maisy Smith', 26, '17-JAN-2019'),
+  ('Stephanie Mendez', 64, '04-MAY-1981'),
+  ('Jack Harkness', 38, '08-JUN-2008')
+;
+

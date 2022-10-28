@@ -153,4 +153,7 @@ select animal.name as "Animal Name", vet.name as "Vet Name", visit.last_visit as
 -- What animal has the most visits to vets?
 select animal.name as "Animal Name", count(visit.animal_id) as "Visited Time", vet.name as "Vet's Name" from animals animal join visits visit on visit.animal_id = animal.id join vets vet on vet.id = visit.vet_id group by ("Animal Name", "Vet's Name") order by "Visited Time" desc limit 1;
 
+-- Who was Maisy Smith's first visit?
+select animal.name as "Animal Name", visit.last_visit as "First Visited (to Maisy Smith)" from animals animal join visits visit on visit.animal_id = animal.id join vets vet on vet.id = visit.vet_id where vet.name like 'Maisy%' order by visit.last_visit asc limit 1;
+
 -- 

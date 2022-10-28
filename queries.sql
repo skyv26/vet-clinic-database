@@ -145,3 +145,4 @@ select vet.name as "Vet Name", animal.name as "Animal Name", visit.last_visit as
 select count(visit.animal_id) as "Total Animal Saw (By Stephanie Mendez)" from animals animal join visits visit on animal.id = visit.animal_id join vets vet on vet.id = visit.vet_id where vet.name like 'Stephanie%' group by vet.name;
 
 -- List all vets and their specialties, including vets with no specialties.
+select vet.name as "Vet Name", type.name as "Specialize In" from vets vet left join specializations skill on skill.vet_id = vet.id left join species type on type.id = skill.species_id order by vet.name asc;

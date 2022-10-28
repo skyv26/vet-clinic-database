@@ -137,3 +137,30 @@ select animal.name as "Animal", owner.full_name from animals animal left join ow
 
 -- Who owns the most animals?
 select owner.full_name as "Owner Name", count(animal.*) as "Total Owned (Animals)" from animals animal left join owners owner on animal.owner_id = owner.id group by owner.full_name order by "Total Owned (Animals)" desc limit 1;
+
+-- Who was the last animal seen by William Tatcher?
+select vet.name as "Vet Name", animal.name as "Animal Name", visit.last_visit as "Last Visit (date)" from animals animal join visits visit on animal.id = visit.animal_id join vets vet on vet.id = visit.vet_id where vet.name like 'William%' order by visit.last_visit desc limit 1;
+
+-- How many different animals did Stephanie Mendez see?
+select count(visit.animal_id) as "Total Animal Saw (By Stephanie Mendez)" from animals animal join visits visit on animal.id = visit.animal_id join vets vet on vet.id = visit.vet_id where vet.name like 'Stephanie%' group by vet.name;
+
+-- List all vets and their specialties, including vets with no specialties.
+select vet.name as "Vet Name", type.name as "Specialize In" from vets vet left join specializations skill on skill.vet_id = vet.id left join species type on type.id = skill.species_id order by vet.name asc;
+
+-- List all animals that visited Stephanie Mendez between April 1st and August 30th, 2020.
+select animal.name as "Animal Name", vet.name as "Vet Name", visit.last_visit as "Last Visited" from animals animal join visits visit on visit.animal_id = animal.id join vets vet on vet.id = visit.vet_id where vet.name like 'Stephanie%' and visit.last_visit between '01-APR-2020' and '30-AUG-2020' order by animal.name asc;
+
+-- What animal has the most visits to vets?
+select animal.name as "Animal Name", count(visit.animal_id) as "Visited Time", vet.name as "Vet's Name" from animals animal join visits visit on visit.animal_id = animal.id join vets vet on vet.id = visit.vet_id group by ("Animal Name", "Vet's Name") order by "Visited Time" desc limit 1;
+
+-- Who was Maisy Smith's first visit?
+select animal.name as "Animal Name", visit.last_visit as "First Visited (to Maisy Smith)" from animals animal join visits visit on visit.animal_id = animal.id join vets vet on vet.id = visit.vet_id where vet.name like 'Maisy%' order by visit.last_visit asc limit 1;
+
+-- Details for most recent visit: animal information, vet information, and date of visit.
+select animal.name as "Animal's Name", type.name as "Type of Animal", to_char(animal.date_of_birth, 'Mon-DD,YYYY') as "Date Of Birth", animal.weight_kg as "Weight (Kg)", vet.name as "Specialist Vet's Name", vet.age as "Age of Vet", to_char(vet.date_of_graduation, 'Mon-DD,YYYY') as "Graduation Date", to_char(visit.last_visit, 'Mon-DD,YYYY') as "Animal's Recent Visit" from animals animal join species type on animal.species_id = type.id join visits visit on visit.animal_id = animal.id join vets vet on vet.id = visit.vet_id order by "Animal's Recent Visit" desc limit 1;
+
+-- How many visits were with a vet that did not specialize in that animal's species?
+select count(visit.vet_id) as "Not Specialization" from species type join specializations expertise on expertise.species_id <> type.id join visits visit on visit.vet_id = expertise.vet_id;
+
+-- What specialty should Maisy Smith consider getting? Look for the species she gets the most.
+select type.name as "Species Name", count(visit.animal_id) as "Visited Time", vet.name as "Vet's Name" from animals animal join visits visit on visit.animal_id = animal.id join vets vet on vet.id = visit.vet_id join species type on type.id = animal.species_id group by ("Species Name", "Vet's Name") order by "Visited Time" desc limit 1;

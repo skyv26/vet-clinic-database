@@ -94,3 +94,69 @@ update animals set owner_id = (select id from owners where full_name like '%well
 update animals set owner_id = (select id from owners where full_name like 'Bob') where name like 'Devi%' or name like 'Plan%';
 update animals set owner_id = (select id from owners where full_name like 'Mel%') where name in ('Charmander', 'Squirtle', 'Blossom');
 update animals set owner_id = (select id from owners where full_name like 'Dean%') where name in ('Angemon', 'Boarmon');
+
+/*
+  Insert the following data for vets:
+    Vet William Tatcher is 45 years old and graduated Apr 23rd, 2000.
+    Vet Maisy Smith is 26 years old and graduated Jan 17th, 2019.
+    Vet Stephanie Mendez is 64 years old and graduated May 4th, 1981.
+    Vet Jack Harkness is 38 years old and graduated Jun 8th, 2008.
+*/
+
+insert into vets 
+  (name, age, date_of_graduation) values
+  ('William Tatcher', 45, '23-APR-2000'),
+  ('Maisy Smith', 26, '17-JAN-2019'),
+  ('Stephanie Mendez', 64, '04-MAY-1981'),
+  ('Jack Harkness', 38, '08-JUN-2008')
+;
+
+/*
+  Insert the following data for specialties:
+    Vet William Tatcher is specialized in Pokemon.
+    Vet Stephanie Mendez is specialized in Digimon and Pokemon.
+    Vet Jack Harkness is specialized in Digimon.
+*/
+
+insert into specializations
+  (vet_id, species_id) values
+  (1, 1),
+  (3, 2),
+  (3, 1),
+  (4, 2)
+;
+
+/* 
+  Insert the following data for visits:
+    Agumon: 1, Gabumon: 2, Pikachu: 3, 
+    Devimon: 4, Charmander: 5, Plantmon: 6, 
+    Squirtle: 7, Angemon: 8, Boarmon: 9, Blossom: 10
+
+    William Tatcher: 1, Maisy Smith: 2, 
+    Stephanie Mendez: 3, Jack Harkness: 4
+*/
+
+insert into visits
+  (animal_id, vet_id, last_visit) values
+  (1, 1, '24-MAY-2020'),
+  (1, 3, '22-JUL-2020'),
+  (2, 4, '02-FEB-2021'),
+  (3, 2, '05-JAN-2020'),
+  (3, 2, '08-MAR-2020'),
+  (3, 2, '14-MAY-2020'),
+  (4, 3, '04-MAY-2021'),
+  (5, 4, '24-FEB-2021'),
+  (6, 2, '21-DEC-2019'),
+  (6, 1, '10-AUG-2020'),
+  (6, 2, '07-APR-2021'),
+  (7, 3, '29-SEP-2019'),
+  (8, 4, '03-OCT-2020'),
+  (8, 4, '04-NOV-2020'),
+  (9, 2, '24-JAN-2019'),
+  (9, 2, '15-MAY-2019'),
+  (9, 2, '27-FEB-2020'),
+  (9, 2, '03-AUG-2020'),
+  (10, 3, '24-MAY-2020'),
+  (10, 1, '11-JAN-2021')
+;
+

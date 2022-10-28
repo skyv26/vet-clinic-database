@@ -106,7 +106,7 @@ create table specializations (
 create table visits (
   animal_id int not null,
   vet_id int not null,
-  last_visit data DATE DEFAULT CURRENT_DATE,
-  constrain fk_animal_id foreign key(animal_id) references animals(id) on delete cascade,
-  constrain fk_vet_id foreign key(vet_id) references vets(id) on delete cascade
+  last_visit DATE DEFAULT CURRENT_DATE,
+  constraint fk_animal_id foreign key(animal_id) references animals(id) on delete cascade,
+  constraint fk_vet_id foreign key(vet_id) references vets(id) on delete cascade
 );

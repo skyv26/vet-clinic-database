@@ -111,3 +111,17 @@ insert into vets
   ('Jack Harkness', 38, '08-JUN-2008')
 ;
 
+/*
+  Insert the following data for specialties:
+    Vet William Tatcher is specialized in Pokemon.
+    Vet Stephanie Mendez is specialized in Digimon and Pokemon.
+    Vet Jack Harkness is specialized in Digimon.
+*/
+
+insert into specializations
+  (vet_id, species_id) values
+  (1, 1),
+  (3, 2),
+  (3, 1),
+  (4, 2)
+;

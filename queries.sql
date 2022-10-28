@@ -137,3 +137,7 @@ select animal.name as "Animal", owner.full_name from animals animal left join ow
 
 -- Who owns the most animals?
 select owner.full_name as "Owner Name", count(animal.*) as "Total Owned (Animals)" from animals animal left join owners owner on animal.owner_id = owner.id group by owner.full_name order by "Total Owned (Animals)" desc limit 1;
+
+-- Who was the last animal seen by William Tatcher?
+select vet.name, animal.name, visit.last_visit from animals animal join visits visit on animal.id = visit.animal_id join vets vet on vet.id = visit.vet_id where vet.name like 'William%' order by visit.last_visit desc limit 1;
+

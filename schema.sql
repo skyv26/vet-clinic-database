@@ -82,3 +82,16 @@ create table vets (
     age smallint,
     date_of_graduation date
 );
+
+/*
+    There is a many-to-many relationship between the tables species and vets: a vet 
+    can specialize in multiple species, and a species can have multiple vets specialized in it. 
+    Create a "join table" called specializations to handle this relationship.
+*/
+
+create table specializations (
+    vet_id int not null,
+    species_id int not null,
+    constraint fk_vets foreign key(vet_id) references vets(id) on delete cascade,
+    constraint fk_species foreign key(species_id) references species(id) on delete cascade
+);

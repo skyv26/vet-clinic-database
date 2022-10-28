@@ -125,3 +125,38 @@ insert into specializations
   (3, 1),
   (4, 2)
 ;
+
+/* 
+  Insert the following data for visits:
+    Agumon: 1, Gabumon: 2, Pikachu: 3, 
+    Devimon: 4, Charmander: 5, Plantmon: 6, 
+    Squirtle: 7, Angemon: 8, Boarmon: 9, Blossom: 10
+
+    William Tatcher: 1, Maisy Smith: 2, 
+    Stephanie Mendez: 3, Jack Harkness: 4
+*/
+
+insert into visits
+  (animal_id, vet_id, last_visit) values
+  (1, 1, '24-MAY-2020'),
+  (1, 3, '22-JUL-2020'),
+  (2, 4, '02-FEB-2021'),
+  (3, 2, '05-JAN-2020'),
+  (3, 2, '08-MAR-2020'),
+  (3, 2, '14-MAY-2020'),
+  (4, 3, '04-MAY-2021'),
+  (5, 4, '24-FEB-2021'),
+  (6, 2, '21-DEC-2019'),
+  (6, 1, '10-AUG-2020'),
+  (6, 2, '07-APR-2021'),
+  (7, 3, '29-SEP-2019'),
+  (8, 4, '03-OCT-2020'),
+  (8, 4, '04-NOV-2020'),
+  (9, 2, '24-JAN-2019'),
+  (9, 2, '15-MAY-2019'),
+  (9, 2, '27-FEB-2020'),
+  (9, 2, '03-AUG-2020'),
+  (10, 3, '24-MAY-2020'),
+  (10, 1, '11-JAN-2021')
+;
+
